@@ -1,0 +1,8 @@
+# 输入适配方法。semantics 选择数据集配置 artifacts 中的 prose_<semantics> 产物。
+base: {name: base}
+prose:
+  name: prose
+  semantics: llm          # llm：LLM 语义卡经文本编码器得到的冻结语义；random：冻结随机坐标对照
+  llm: default            # semantics: llm 时的语义生成器（configs/llm.yaml）
+  embedding: default      # semantics: llm 时的文本编码器（configs/embedding.yaml）
+  memory_dim: 16          # h：每个变量的过程时钟通道数

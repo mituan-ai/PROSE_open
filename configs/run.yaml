@@ -1,0 +1,31 @@
+# 日常调度：注释或取消注释下列条目即可选择本次要跑的 run，然后执行
+#     uv run python scripts/run_study.py
+# 自动使用本机全部可见 GPU（每卡一个 run，排队完成）；已完成的 run 自动跳过。
+# 同一 run 的目录只取决于运行定义，与清单无关，因此不同清单可复用已完成的 run。
+name: run
+datasets:
+  - ladle_preheating
+  - thickener_dewatering
+  - indpensim
+backbones:
+  - gru
+  # - lstm
+  # - transformer
+  # - informer
+  # - mamba
+  # - itransformer
+  # - patchtst
+  # - moderntcn
+methods:
+  - base
+  - prose
+# LLM 与编码器只作用于使用 LLM 语义的 PROSE 方法，按 llms x embeddings 组合展开；
+# 语义产物尚未构建的组合显示为 blocked 并跳过。
+llms:
+  - claude-opus-5-5
+embeddings:
+  - embed-v5.0-pro
+seeds:
+  - 2024
+# 覆盖共享配置，例如快速试跑：training.max_epochs: 2；与默认值相同的覆盖不改变 run 身份。
+overrides: {}

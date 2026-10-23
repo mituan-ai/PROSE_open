@@ -1,0 +1,19 @@
+# 离线文本编码器登记表。default 编码随仓库提供的语义卡；可在 models 下登记其他编码器。
+# 地址与密钥取自 configs/env/api.local.env。
+# dimensions 即语义维度 k，也是 PROSE 跨变量项的维度校正常数，不另设超参数。
+# dimension_parameter 是各接口请求输出维度的字段名：
+#   openai_compatible: dimensions 或 output_dimension；google_generative_language: outputDimensionality；
+#   cohere_native: output_dimension。
+default: embed-v5.0-pro
+defaults:
+  provider: openai_compatible
+  dimension_parameter: dimensions
+  dimensions: 256
+  batch_size: 10
+  timeout_seconds: 120
+models:
+  embed-v5.0-pro:
+    provider: cohere_native
+    dimension_parameter: output_dimension
+    base_url: "${PROSE_EMBEDDING_BASE_URL}"
+    api_key_env: PROSE_EMBEDDING_API_KEY

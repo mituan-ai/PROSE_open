@@ -1,0 +1,15 @@
+# 钢包预热温度预测：60 步历史预测未来 5 步温度；整过程留出测试。
+name: ladle_preheating
+path: resources/datasets/ladle_preheating
+file: windows.npz
+split:
+  train: {column: split, values: [train]}
+  validation:
+    column: process_name
+    values: [process_02, process_06, process_11, process_26, process_29]
+  test: {column: process_name, values: [process_13, process_23, process_33]}
+eval_groups:
+  process: process_name
+artifacts:
+  prose_llm: outputs/semantic_artifacts/ladle_preheating/llm          # 每个 (LLM, 编码器) 一个子目录
+  prose_random: outputs/semantic_artifacts/ladle_preheating/random_seed0_256d

@@ -1,0 +1,60 @@
+{
+  "created_at_utc": "2026-10-19T11:28:58.765850+00:00",
+  "centering": "task_mean",
+  "source": "llm",
+  "cards_path": "outputs/semantics/indpensim/claude-opus-5-5/semantic_cards.json",
+  "cards_sha256": "8ed313e04728ec81edb6e0c577f8f3fda22a9c7d3e7fa735eb0d9c15f4793b24",
+  "cards_edited_after_generation": false,
+  "prompt_version": "prose-process-temporal-semantics-v2",
+  "llm": {
+    "model": "claude-opus-5-5",
+    "provider": "openai_compatible",
+    "temperature": null,
+    "reasoning_effort": "high",
+    "max_tokens": 65536,
+    "token_parameter": "max_tokens",
+    "timeout_seconds": 600.0,
+    "stream": true,
+    "response_model": "claude-opus-5-5"
+  },
+  "embedding": {
+    "provider": "cohere_native",
+    "model": "embed-v5.0-pro",
+    "dimension_parameter": "output_dimension",
+    "dimensions": 256,
+    "request_dimensions": 256
+  },
+  "embedding_generation": {
+    "texts": 46,
+    "seconds": 4.707,
+    "input_tokens": 1881
+  },
+  "artifact_type": "prose_process_temporal_semantics",
+  "variable_names": [
+    "time_h",
+    "aeration",
+    "agitator_rpm",
+    "sugar_feed",
+    "acid",
+    "base",
+    "cooling_water",
+    "heating_water",
+    "wfi",
+    "air_head_pressure",
+    "dumped_broth",
+    "do2",
+    "volume",
+    "weight",
+    "ph",
+    "temp",
+    "co2_out",
+    "paa_flow",
+    "oil_flow",
+    "our",
+    "o2_out",
+    "cer",
+    "ammonia_shots"
+  ],
+  "semantic_dim": 256,
+  "arrays_sha256": "0451e8fd21e3e15ad5479da5bf4440fb5755e7b0712cddd605864dad678a358a"
+}

@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "prose-open"
+version = "0.1.0"
+description = "Open-source implementation of PROSE: process-semantic history dynamics for industrial prediction"
+requires-python = ">=3.14"
+dependencies = [
+  "numpy",
+  "pyyaml",
+]
+
+[project.optional-dependencies]
+train = [
+  "einops",
+  "kernels",
+  "torch",
+  "transformers",
+]
+llm = [
+  "openai",
+]
+dev = [
+  "pytest",
+  "ruff",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+  "live: tests that perform real external LLM or embedding calls",
+  "dataset: tests that read the released windows.npz bundles under resources/datasets",
+]
+
+[tool.ruff]
+line-length = 110
+target-version = "py314"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]

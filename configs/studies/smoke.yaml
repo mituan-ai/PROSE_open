@@ -1,0 +1,11 @@
+# 冒烟：短训练检查方法、语义产物与调度能端到端运行。
+name: smoke
+output_root: outputs/smoke_runs
+datasets: [thickener_dewatering]
+backbones: [gru]
+methods: [base, prose]
+seeds: [2024]
+overrides:
+  training.max_epochs: 2
+  efficiency.timing_repeat_loops: 2
+  efficiency.train_timing_steps: 5

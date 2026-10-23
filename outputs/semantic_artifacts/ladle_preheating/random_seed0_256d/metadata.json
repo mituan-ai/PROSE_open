@@ -1,0 +1,25 @@
+{
+  "created_at_utc": "2026-10-19T10:15:43.684606+00:00",
+  "centering": "task_mean",
+  "source": "random",
+  "seed": 0,
+  "artifact_type": "prose_process_temporal_semantics",
+  "variable_names": [
+    "时间间隔",
+    "煤气阀门开度",
+    "CO2流量",
+    "O2流量",
+    "CO流量",
+    "N2流量",
+    "煤气压力",
+    "空气阀门开度",
+    "空气O2流量",
+    "空气N2流量",
+    "空气CO2流量",
+    "空气压力",
+    "燃烧效率指标",
+    "温度"
+  ],
+  "semantic_dim": 256,
+  "arrays_sha256": "f48e066c05881b7f86c3d6fd0320d2cf089c24f800294c18c901775957d50504"
+}

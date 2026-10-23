@@ -1,0 +1,14 @@
+# 浓密脱水底流浓度软测量：30 分钟历史估计当前底流浓度。
+name: thickener_dewatering
+path: resources/datasets/thickener_dewatering
+file: windows.npz
+split:
+  train: {column: domain_bucket, values: [train]}
+  validation: {column: scenario_name, values: [train_jitter_6]}
+  test: {column: domain_bucket, values: [same_family, far]}
+eval_groups:
+  domain: domain_bucket
+  scenario: scenario_name
+artifacts:
+  prose_llm: outputs/semantic_artifacts/thickener_dewatering/llm          # 每个 (LLM, 编码器) 一个子目录
+  prose_random: outputs/semantic_artifacts/thickener_dewatering/random_seed0_256d

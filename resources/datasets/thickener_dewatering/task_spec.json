@@ -1,0 +1,51 @@
+{
+  "dataset": "thickener_dewatering",
+  "task_type": "当前时刻底流浓度软测量",
+  "target": "当前目标分钟的 underflow_concentration",
+  "horizon": "用包含当前分钟的 30 分钟历史窗口估计当前底流浓度",
+  "input_window_definition": "每个样本包含 q_in、p2、p3、phase_pressurizing、phase_discharging 从 t_minus_29 到 t_minus_00 的 30 分钟历史窗口；t_minus_00 是当前目标分钟。",
+  "online_boundary": "当前或历史 underflow_concentration 不作为输入。只能使用 30 分钟窗口内在线可见的流量、压力和操作阶段变量。",
+  "process_background": "该任务表示浓密/脱水过程的底流浓度软测量。来料浆体流量、中部压力、底部压力和升压/卸压阶段描述可见过程状态，用于推断底流浓度。",
+  "variables": [
+    {
+      "name": "q_in",
+      "unit": "仿真体积流量尺度",
+      "sampling_frequency": "1 分钟",
+      "availability": "当前和历史输入窗口内在线可得",
+      "role": "来料浆体流量观测",
+      "description": "进入浓密/脱水系统的浆体体积流量，直接反映可见负荷变化。"
+    },
+    {
+      "name": "p2",
+      "unit": "仿真压力尺度",
+      "sampling_frequency": "1 分钟",
+      "availability": "当前和历史输入窗口内在线可得",
+      "role": "中部压力状态观测",
+      "description": "中部压力测量，反映压实、水力状态和过程动态。"
+    },
+    {
+      "name": "p3",
+      "unit": "仿真压力尺度",
+      "sampling_frequency": "1 分钟",
+      "availability": "当前和历史输入窗口内在线可得",
+      "role": "底部压力状态观测",
+      "description": "底部压力测量，通过压力到浓度映射与底流浓度密切相关。"
+    },
+    {
+      "name": "phase_pressurizing",
+      "unit": "binary",
+      "sampling_frequency": "1 分钟",
+      "availability": "当前和历史输入窗口内在线可得",
+      "role": "操作阶段指示",
+      "description": "升压阶段 one-hot 指示变量，表示系统当前是否处于升压阶段。"
+    },
+    {
+      "name": "phase_discharging",
+      "unit": "binary",
+      "sampling_frequency": "1 分钟",
+      "availability": "当前和历史输入窗口内在线可得",
+      "role": "操作阶段指示",
+      "description": "卸压/脱水阶段 one-hot 指示变量，表示系统当前是否处于排放或脱水阶段。"
+    }
+  ]
+}

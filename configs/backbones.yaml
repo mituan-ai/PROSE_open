@@ -1,0 +1,23 @@
+# 8 个预测主干的超参，全部数据集使用同一设置。
+# 依赖窗口长度的主干由 build_backbone 按数据窗口长度填写 window_size。
+gru: {type: gru, hidden_size: 96, num_layers: 2, dropout: 0.2}
+lstm: {type: lstm, hidden_size: 96, num_layers: 2, dropout: 0.2}
+transformer: {type: transformer, d_model: 96, num_layers: 2, num_heads: 4, d_ff: 256, dropout: 0.1}
+informer:
+  {type: informer, d_model: 96, num_layers: 2, num_heads: 4, d_ff: 256, dropout: 0.1, sampling_factor: 5, distil: true}
+mamba: {type: mamba, d_model: 96, num_layers: 2, state_size: 16, conv_kernel: 4, expand: 2, dropout: 0.1}
+itransformer: {type: itransformer, d_model: 96, num_layers: 2, num_heads: 4, d_ff: 256, dropout: 0.1}
+patchtst:
+  {type: patchtst, d_model: 96, num_layers: 2, num_heads: 4, d_ff: 256, patch_len: 8, stride: 4, dropout: 0.1}
+# ModernTCN 按官方结构（各 stage 一个列表元素）；单 stage 设置取自官方分类脚本，宽度 64。
+moderntcn:
+  type: moderntcn
+  patch_size: 8
+  patch_stride: 4
+  dims: [64]
+  num_blocks: [1]
+  large_size: [31]
+  small_size: [5]
+  ffn_ratio: 1
+  dropout: 0.1
+  class_dropout: 0.0

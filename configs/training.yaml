@@ -1,0 +1,20 @@
+# 训练与效率测量的共同设置；数据集配置中的 training 可覆盖 batch_size 等字段。
+training:
+  device: cuda
+  max_epochs: 300
+  batch_size: 128
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  gradient_clip_norm: 1.0
+  early_stopping_patience: 40
+  early_stopping_rel_delta: 0.0001   # 验证 RMSE 相对改善不足 0.01% 不计为改善（标签尺度跨数据集差 3 个数量级）
+  scheduler_factor: 0.5
+  scheduler_patience: 15
+  min_lr: 0.00001
+# 效率在训练全部结束后从 best.pt 独占设备测量（run_study 的效率阶段）；不属于 run 身份。
+efficiency:
+  timing_warmup_loops: 3      # 批量推理：整个测试集的预热轮数
+  timing_repeat_loops: 20     # 批量推理：整个测试集的计时轮数
+  latency_samples: 200        # 单样本延迟：batch=1 的前向次数，记录均值、中位数与 P95
+  train_warmup_steps: 3       # 训练步：预热步数
+  train_timing_steps: 50      # 训练步：计时步数（前向、反向、裁剪、AdamW）

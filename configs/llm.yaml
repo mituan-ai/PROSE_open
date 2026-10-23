@@ -1,0 +1,12 @@
+# 离线语义生成器登记表。default 生成随仓库提供的语义卡；可在 models 下登记其他模型。
+# 地址与密钥取自 configs/env/api.local.env；未配置密钥的模型在批量生成时跳过。
+# openai_compatible 只表示请求协议兼容 OpenAI，不表示模型厂商。
+default: claude-opus-5-5
+defaults:
+  provider: openai_compatible
+  reasoning_effort: high
+  max_tokens: 65536        # 留足思考与回答空间；输出截断记为失败，不会被接受
+  timeout_seconds: 600     # 流式接收时为相邻数据块之间的读取超时
+  stream: true
+models:
+  claude-opus-5-5: {base_url: "${PROSE_LLM_BASE_URL}", api_key_env: PROSE_LLM_API_KEY}

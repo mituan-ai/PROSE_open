@@ -1,0 +1,195 @@
+{
+  "dataset": "indpensim",
+  "task_type": "offline penicillin concentration soft sensing",
+  "target": "penicillin_offline at the current offline assay time",
+  "horizon": "estimate current offline penicillin concentration from a 120-step historical online process window",
+  "input_window_definition": "Each sample contains 120 historical online process steps at 12-minute resolution. t_minus_000 is the offline assay time used as the target.",
+  "online_boundary": "Only continuous online process and control variables are inputs. Raman variables, penicillin_online, offline assay variables, and future labels are excluded.",
+  "process_background": "IndPenSim is a fed-batch penicillin fermentation process. The selected variables describe elapsed batch time, aeration, agitation, feeds, acid/base control, thermal control, pressure, broth removal, dissolved oxygen, vessel inventory, pH, temperature, off-gas composition, metabolic rates, precursor/oil additions, and ammonia shots.",
+  "variables": [
+    {
+      "name": "time_h",
+      "unit": "hour",
+      "sampling_frequency": "12 minutes",
+      "availability": "online at the current and past input-window steps",
+      "role": "batch time feature",
+      "description": "Elapsed fermentation batch time, representing process stage and biological progression."
+    },
+    {
+      "name": "aeration",
+      "unit": "L/h",
+      "sampling_frequency": "12 minutes",
+      "availability": "online",
+      "role": "gas supply control input",
+      "description": "Aeration rate controlling oxygen supply and gas-liquid mass transfer."
+    },
+    {
+      "name": "agitator_rpm",
+      "unit": "rpm",
+      "sampling_frequency": "12 minutes",
+      "availability": "online",
+      "role": "mixing control input",
+      "description": "Agitator speed affecting mixing, oxygen transfer, and culture homogeneity."
+    },
+    {
+      "name": "sugar_feed",
+      "unit": "L/h",
+      "sampling_frequency": "12 minutes",
+      "availability": "online",
+      "role": "substrate feed control input",
+      "description": "Sugar feed rate supplying carbon substrate for biomass growth and penicillin production."
+    },
+    {
+      "name": "acid",
+      "unit": "L/h",
+      "sampling_frequency": "12 minutes",
+      "availability": "online",
+      "role": "pH control input",
+      "description": "Acid addition used to regulate fermentation pH."
+    },
+    {
+      "name": "base",
+      "unit": "L/h",
+      "sampling_frequency": "12 minutes",
+      "availability": "online",
+      "role": "pH control input",
+      "description": "Base addition used to regulate fermentation pH."
+    },
+    {
+      "name": "cooling_water",
+      "unit": "L/h",
+      "sampling_frequency": "12 minutes",
+      "availability": "online",
+      "role": "temperature control input",
+      "description": "Cooling water flow removing heat from the fermenter."
+    },
+    {
+      "name": "heating_water",
+      "unit": "L/h",
+      "sampling_frequency": "12 minutes",
+      "availability": "online",
+      "role": "temperature control input",
+      "description": "Heating water flow adding heat to the fermenter."
+    },
+    {
+      "name": "wfi",
+      "unit": "L/h",
+      "sampling_frequency": "12 minutes",
+      "availability": "online",
+      "role": "dilution or water feed input",
+      "description": "Water-for-injection related flow affecting dilution and broth volume."
+    },
+    {
+      "name": "air_head_pressure",
+      "unit": "bar",
+      "sampling_frequency": "12 minutes",
+      "availability": "online",
+      "role": "gas headspace pressure state",
+      "description": "Air head pressure reflecting gas supply and vessel headspace condition."
+    },
+    {
+      "name": "dumped_broth",
+      "unit": "L/h",
+      "sampling_frequency": "12 minutes",
+      "availability": "online",
+      "role": "broth removal input",
+      "description": "Dumped broth flow indicating removal of fermentation broth and inventory change."
+    },
+    {
+      "name": "do2",
+      "unit": "mg/L",
+      "sampling_frequency": "12 minutes",
+      "availability": "online",
+      "role": "dissolved oxygen state observation",
+      "description": "Dissolved oxygen measurement reflecting oxygen availability and microbial metabolic demand."
+    },
+    {
+      "name": "volume",
+      "unit": "L",
+      "sampling_frequency": "12 minutes",
+      "availability": "online",
+      "role": "vessel inventory state",
+      "description": "Fermenter liquid volume affected by feeds, removals, evaporation, and sampling."
+    },
+    {
+      "name": "weight",
+      "unit": "kg",
+      "sampling_frequency": "12 minutes",
+      "availability": "online",
+      "role": "vessel inventory state",
+      "description": "Fermenter weight providing another online inventory measurement."
+    },
+    {
+      "name": "ph",
+      "unit": "pH",
+      "sampling_frequency": "12 minutes",
+      "availability": "online",
+      "role": "biochemical state observation",
+      "description": "Fermentation pH, controlled by acid/base additions and important for productivity."
+    },
+    {
+      "name": "temp",
+      "unit": "K",
+      "sampling_frequency": "12 minutes",
+      "availability": "online",
+      "role": "temperature state observation",
+      "description": "Fermenter temperature, controlled by heating and cooling and affecting biological kinetics."
+    },
+    {
+      "name": "co2_out",
+      "unit": "%",
+      "sampling_frequency": "12 minutes",
+      "availability": "online",
+      "role": "off-gas composition observation",
+      "description": "Carbon dioxide in outlet gas, reflecting respiration and metabolic activity."
+    },
+    {
+      "name": "paa_flow",
+      "unit": "L/h",
+      "sampling_frequency": "12 minutes",
+      "availability": "online",
+      "role": "precursor feed control input",
+      "description": "Phenylacetic-acid precursor feed flow related to penicillin biosynthesis."
+    },
+    {
+      "name": "oil_flow",
+      "unit": "L/h",
+      "sampling_frequency": "12 minutes",
+      "availability": "online",
+      "role": "antifoam or oil addition input",
+      "description": "Oil or antifoam flow affecting broth condition and operational stability."
+    },
+    {
+      "name": "our",
+      "unit": "g/min",
+      "sampling_frequency": "12 minutes",
+      "availability": "online",
+      "role": "metabolic rate observation",
+      "description": "Oxygen uptake rate, reflecting microbial respiration and metabolic intensity."
+    },
+    {
+      "name": "o2_out",
+      "unit": "%",
+      "sampling_frequency": "12 minutes",
+      "availability": "online",
+      "role": "off-gas oxygen observation",
+      "description": "Oxygen concentration in outlet gas, coupled with aeration and oxygen uptake."
+    },
+    {
+      "name": "cer",
+      "unit": "g/h",
+      "sampling_frequency": "12 minutes",
+      "availability": "online",
+      "role": "metabolic rate observation",
+      "description": "Carbon dioxide evolution rate, reflecting respiration and production-related metabolism."
+    },
+    {
+      "name": "ammonia_shots",
+      "unit": "kg",
+      "sampling_frequency": "12 minutes",
+      "availability": "online",
+      "role": "nitrogen or pH-related pulse input",
+      "description": "Ammonia shot additions that may affect nitrogen availability, pH control, and broth chemistry."
+    }
+  ]
+}

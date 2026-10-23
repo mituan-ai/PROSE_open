@@ -1,0 +1,18 @@
+# IndPenSim 离线青霉素浓度软测量：120 步历史估计当前离线浓度；配方批次训练。
+name: indpensim
+path: resources/datasets/indpensim
+file: windows.npz
+split:
+  train: {column: domain_bucket, values: [train]}
+  validation:
+    column: scenario_name
+    values: [train_recipe_005, train_recipe_011, train_recipe_017, train_recipe_023, train_recipe_029]
+  test:
+    column: domain_bucket
+    values: [same_family, near, far, sim_recipe, rhythm_timing, rhythm_condition]
+eval_groups:
+  domain: domain_bucket
+  scenario: scenario_name
+artifacts:
+  prose_llm: outputs/semantic_artifacts/indpensim/llm          # 每个 (LLM, 编码器) 一个子目录
+  prose_random: outputs/semantic_artifacts/indpensim/random_seed0_256d

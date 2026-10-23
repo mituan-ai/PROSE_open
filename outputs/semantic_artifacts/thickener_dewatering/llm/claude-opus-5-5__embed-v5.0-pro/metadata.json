@@ -1,0 +1,42 @@
+{
+  "created_at_utc": "2026-10-19T11:28:54.050491+00:00",
+  "centering": "task_mean",
+  "source": "llm",
+  "cards_path": "outputs/semantics/thickener_dewatering/claude-opus-5-5/semantic_cards.json",
+  "cards_sha256": "d8b88ac7b98ef9942df2b4f1a6b9172ce38dd98f2e10e007a3f1fbe609339794",
+  "cards_edited_after_generation": false,
+  "prompt_version": "prose-process-temporal-semantics-v2",
+  "llm": {
+    "model": "claude-opus-5-5",
+    "provider": "openai_compatible",
+    "temperature": null,
+    "reasoning_effort": "high",
+    "max_tokens": 65536,
+    "token_parameter": "max_tokens",
+    "timeout_seconds": 600.0,
+    "stream": true,
+    "response_model": "claude-opus-5-5"
+  },
+  "embedding": {
+    "provider": "cohere_native",
+    "model": "embed-v5.0-pro",
+    "dimension_parameter": "output_dimension",
+    "dimensions": 256,
+    "request_dimensions": 256
+  },
+  "embedding_generation": {
+    "texts": 10,
+    "seconds": 0.956,
+    "input_tokens": 709
+  },
+  "artifact_type": "prose_process_temporal_semantics",
+  "variable_names": [
+    "q_in",
+    "p2",
+    "p3",
+    "phase_pressurizing",
+    "phase_discharging"
+  ],
+  "semantic_dim": 256,
+  "arrays_sha256": "cb706519414404a0a83e48dcb1b493b08e3929810dbb7c964a847e5ed49999a7"
+}
